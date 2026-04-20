@@ -177,6 +177,9 @@
     "jsdom": "^26.0.0",
     "vitest": "^4.0.0"
   },
+  "knip": {
+    "ignore": ["**/*.stories.tsx", "**/storybook/**"]
+  },
   "size-limit": [
     {
       "path": "dist/index.js",
