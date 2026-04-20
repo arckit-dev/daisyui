@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 import { ButtonLink } from '../../primitives/button-link';
 
@@ -11,25 +12,70 @@ const pageHref = (href: string) => (number: number) => {
   return `${baseHref}?${searchParams.toString()}`;
 };
 
-export const PreviousPageLink = ({ number, disabled, href }: { number: number; disabled: boolean; href: string }) => (
-  <ButtonLink disabled={disabled} className='join-item' kind='btn-ghost' href={pageHref(href)(number)} title='Page précédente'>
-    <RiArrowLeftSLine aria-hidden={true} />
-  </ButtonLink>
-);
+type RenderLink = (props: { href: string; children: ReactNode; className: string; title: string }) => ReactNode;
 
-export const NextPageLink = ({ number, disabled, href }: { number: number; disabled: boolean; href: string }) => (
-  <ButtonLink disabled={disabled} className='join-item' kind='btn-ghost' href={pageHref(href)(number)} title='Page suivante'>
-    <RiArrowRightSLine aria-hidden={true} />
-  </ButtonLink>
-);
+export const PreviousPageLink = ({
+  number,
+  disabled,
+  href,
+  renderLink
+}: { number: number; disabled: boolean; href: string; renderLink?: RenderLink }) => {
+  const resolvedHref = pageHref(href)(number);
+  const props = { href: resolvedHref, className: 'btn btn-ghost join-item', title: 'Page précédente' };
 
-export const PageLink = ({ number, isCurrent, href }: { number: number; isCurrent: boolean; href: string }) => (
-  <ButtonLink
-    className='join-item'
-    {...(isCurrent ? { color: 'btn-primary' } : { kind: 'btn-ghost' })}
-    href={pageHref(href)(number)}
-    title={`Page ${number}`}
-  >
-    {number}
-  </ButtonLink>
-);
+  if (renderLink && !disabled) {
+    return renderLink({ ...props, children: <RiArrowLeftSLine aria-hidden={true} /> });
+  }
+
+  return (
+    <ButtonLink disabled={disabled} className='join-item' kind='btn-ghost' href={resolvedHref} title='Page précédente'>
+      <RiArrowLeftSLine aria-hidden={true} />
+    </ButtonLink>
+  );
+};
+
+export const NextPageLink = ({
+  number,
+  disabled,
+  href,
+  renderLink
+}: { number: number; disabled: boolean; href: string; renderLink?: RenderLink }) => {
+  const resolvedHref = pageHref(href)(number);
+  const props = { href: resolvedHref, className: 'btn btn-ghost join-item', title: 'Page suivante' };
+
+  if (renderLink && !disabled) {
+    return renderLink({ ...props, children: <RiArrowRightSLine aria-hidden={true} /> });
+  }
+
+  return (
+    <ButtonLink disabled={disabled} className='join-item' kind='btn-ghost' href={resolvedHref} title='Page suivante'>
+      <RiArrowRightSLine aria-hidden={true} />
+    </ButtonLink>
+  );
+};
+
+export const PageLink = ({
+  number,
+  isCurrent,
+  href,
+  renderLink
+}: { number: number; isCurrent: boolean; href: string; renderLink?: RenderLink }) => {
+  const resolvedHref = pageHref(href)(number);
+  const className = isCurrent ? 'btn btn-primary join-item' : 'btn btn-ghost join-item';
+  const props = { href: resolvedHref, className, title: `Page ${number}` };
+
+  if (renderLink) {
+    return renderLink({ ...props, children: number });
+  }
+
+  return (
+    <ButtonLink
+      className='join-item'
+      {...(isCurrent ? { color: 'btn-primary' } : { kind: 'btn-ghost' })}
+      href={resolvedHref}
+      title={`Page ${number}`}
+    >
+      {number}
+    </ButtonLink>
+  );
+};
