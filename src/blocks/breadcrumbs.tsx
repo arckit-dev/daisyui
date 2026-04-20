@@ -1,8 +1,11 @@
+import type { ReactNode } from 'react';
 import { RiArrowLeftLine } from 'react-icons/ri';
 import { ICON_MD } from '../icons/sizes';
 import { ButtonLink } from '../primitives/button-link';
 import { Link } from '../primitives/link';
 import { cn } from '../utils';
+
+type RenderLink = (props: { href: string; children: ReactNode; className?: string; title?: string }) => ReactNode;
 
 export type BreadcrumbsProps = {
   back?: {
@@ -14,9 +17,10 @@ export type BreadcrumbsProps = {
     href?: string;
   }[];
   className?: string;
+  renderLink?: RenderLink;
 };
 
-export const Breadcrumbs = ({ back, items, className }: BreadcrumbsProps) => {
+export const Breadcrumbs = ({ back, items, className, renderLink }: BreadcrumbsProps) => {
   if (items.length === 0) return null;
 
   const nav = (
@@ -25,9 +29,13 @@ export const Breadcrumbs = ({ back, items, className }: BreadcrumbsProps) => {
         {items.map(({ label, href }) =>
           href ? (
             <li key={href}>
-              <Link href={href} className='text-neutral'>
-                {label}
-              </Link>
+              {renderLink ? (
+                renderLink({ href, children: label, className: 'link link-hover text-neutral' })
+              ) : (
+                <Link href={href} className='text-neutral'>
+                  {label}
+                </Link>
+              )}
             </li>
           ) : (
             <li key={label} className='text-base-title'>
@@ -41,9 +49,25 @@ export const Breadcrumbs = ({ back, items, className }: BreadcrumbsProps) => {
 
   return back ? (
     <div className={cn('flex items-center gap-2', className)}>
-      <ButtonLink scale='btn-xs' kind='btn-ghost' color='btn-neutral' modifier='btn-circle' href={back.href} title={back.label}>
-        <RiArrowLeftLine size={ICON_MD} />
-      </ButtonLink>
+      {renderLink ? (
+        renderLink({
+          href: back.href,
+          children: <RiArrowLeftLine size={ICON_MD} />,
+          className: 'btn btn-xs btn-ghost btn-neutral btn-circle',
+          title: back.label
+        })
+      ) : (
+        <ButtonLink
+          scale='btn-xs'
+          kind='btn-ghost'
+          color='btn-neutral'
+          modifier='btn-circle'
+          href={back.href}
+          title={back.label}
+        >
+          <RiArrowLeftLine size={ICON_MD} />
+        </ButtonLink>
+      )}
       {nav}
     </div>
   ) : (
