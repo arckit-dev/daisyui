@@ -1,0 +1,189 @@
+{
+  "name": "@arckit/daisyui",
+  "version": "1.0.0",
+  "description": "DaisyUI/Tailwind component library with primitives, blocks, headless utilities, icons, and theme support",
+  "packageManager": "pnpm@10.33.0",
+  "license": "MIT",
+  "author": "Marc Gavanier <marc@gavanier.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arckit-dev/daisyui.git"
+  },
+  "homepage": "https://github.com/arckit-dev/daisyui#readme",
+  "bugs": {
+    "url": "https://github.com/arckit-dev/daisyui/issues"
+  },
+  "keywords": ["arckit", "daisyui", "tailwindcss", "react", "components", "ui"],
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./primitives": {
+      "import": {
+        "types": "./dist/primitives.d.ts",
+        "default": "./dist/primitives.js"
+      },
+      "require": {
+        "types": "./dist/primitives.d.cts",
+        "default": "./dist/primitives.cjs"
+      }
+    },
+    "./blocks": {
+      "import": {
+        "types": "./dist/blocks.d.ts",
+        "default": "./dist/blocks.js"
+      },
+      "require": {
+        "types": "./dist/blocks.d.cts",
+        "default": "./dist/blocks.cjs"
+      }
+    },
+    "./headless": {
+      "import": {
+        "types": "./dist/headless.d.ts",
+        "default": "./dist/headless.js"
+      },
+      "require": {
+        "types": "./dist/headless.d.cts",
+        "default": "./dist/headless.cjs"
+      }
+    },
+    "./icons": {
+      "import": {
+        "types": "./dist/icons.d.ts",
+        "default": "./dist/icons.js"
+      },
+      "require": {
+        "types": "./dist/icons.d.cts",
+        "default": "./dist/icons.cjs"
+      }
+    },
+    "./theme": {
+      "import": {
+        "types": "./dist/theme.d.ts",
+        "default": "./dist/theme.js"
+      },
+      "require": {
+        "types": "./dist/theme.d.cts",
+        "default": "./dist/theme.cjs"
+      }
+    },
+    "./utils": {
+      "import": {
+        "types": "./dist/utils.d.ts",
+        "default": "./dist/utils.js"
+      },
+      "require": {
+        "types": "./dist/utils.d.cts",
+        "default": "./dist/utils.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "primitives": ["dist/primitives.d.ts"],
+      "blocks": ["dist/blocks.d.ts"],
+      "headless": ["dist/headless.d.ts"],
+      "icons": ["dist/icons.d.ts"],
+      "theme": ["dist/theme.d.ts"],
+      "utils": ["dist/utils.d.ts"]
+    }
+  },
+  "files": ["dist"],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit",
+    "lint:code": "biome check --write",
+    "lint:code:ci": "biome ci",
+    "lint:commit": "commitlint --from origin/main",
+    "lint:unused": "knip",
+    "check:publint": "publint",
+    "check:attw": "attw --pack .",
+    "check:size": "size-limit",
+    "release": "semantic-release",
+    "prepare": "husky"
+  },
+  "peerDependencies": {
+    "@dnd-kit/core": ">=6",
+    "@dnd-kit/sortable": ">=10",
+    "@dnd-kit/utilities": ">=3",
+    "@radix-ui/react-dropdown-menu": ">=2",
+    "@radix-ui/react-popover": ">=1",
+    "@radix-ui/react-slot": ">=1",
+    "@radix-ui/react-tooltip": ">=1",
+    "clsx": ">=2",
+    "downshift": ">=9",
+    "next-themes": ">=0.4",
+    "react": ">=19",
+    "react-dom": ">=19",
+    "react-hot-toast": ">=2",
+    "react-icons": ">=5",
+    "tailwind-merge": ">=3"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.17.0",
+    "@biomejs/biome": "^2.4.0",
+    "@commitlint/cli": "^20.0.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@dnd-kit/core": "^6.0.0",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.0.0",
+    "@radix-ui/react-dropdown-menu": "^2.0.0",
+    "@radix-ui/react-popover": "^1.0.0",
+    "@radix-ui/react-slot": "^1.0.0",
+    "@radix-ui/react-tooltip": "^1.0.0",
+    "@semantic-release/changelog": "^6.0.0",
+    "@semantic-release/exec": "^7.0.0",
+    "@semantic-release/git": "^10.0.0",
+    "@size-limit/file": "^11.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitest/coverage-v8": "^4.0.0",
+    "clsx": "^2.0.0",
+    "downshift": "^9.0.0",
+    "husky": "^9.0.0",
+    "knip": "^5.0.0",
+    "lint-staged": "^16.0.0",
+    "next-themes": "^0.4.0",
+    "publint": "^0.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.0.0",
+    "react-icons": "^5.0.0",
+    "semantic-release": "^24.0.0",
+    "size-limit": "^11.0.0",
+    "tailwind-merge": "^3.0.0",
+    "tsdown": "^0.12.0",
+    "typescript": "^5.9.0",
+    "vitest": "^4.0.0"
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.js",
+      "limit": "50 kB"
+    }
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
