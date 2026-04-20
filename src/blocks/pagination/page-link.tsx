@@ -19,7 +19,12 @@ export const PreviousPageLink = ({
   disabled,
   href,
   renderLink
-}: { number: number; disabled: boolean; href: string; renderLink?: RenderLink }) => {
+}: {
+  number: number;
+  disabled: boolean;
+  href: string;
+  renderLink?: RenderLink;
+}) => {
   const resolvedHref = pageHref(href)(number);
   const props = { href: resolvedHref, className: 'btn btn-ghost join-item', title: 'Page précédente' };
 
@@ -39,7 +44,12 @@ export const NextPageLink = ({
   disabled,
   href,
   renderLink
-}: { number: number; disabled: boolean; href: string; renderLink?: RenderLink }) => {
+}: {
+  number: number;
+  disabled: boolean;
+  href: string;
+  renderLink?: RenderLink;
+}) => {
   const resolvedHref = pageHref(href)(number);
   const props = { href: resolvedHref, className: 'btn btn-ghost join-item', title: 'Page suivante' };
 
@@ -59,7 +69,12 @@ export const PageLink = ({
   isCurrent,
   href,
   renderLink
-}: { number: number; isCurrent: boolean; href: string; renderLink?: RenderLink }) => {
+}: {
+  number: number;
+  isCurrent: boolean;
+  href: string;
+  renderLink?: RenderLink;
+}) => {
   const resolvedHref = pageHref(href)(number);
   const className = isCurrent ? 'btn btn-primary join-item' : 'btn btn-ghost join-item';
   const props = { href: resolvedHref, className, title: `Page ${number}` };
