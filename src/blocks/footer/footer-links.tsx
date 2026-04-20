@@ -1,5 +1,8 @@
+import type { ReactNode } from 'react';
 import { Link, type LinkProps } from '../../primitives/link';
 import { cn } from '../../utils';
+
+type RenderLink = (props: { href: string; children: ReactNode; className?: string }) => ReactNode;
 
 export type FooterLink = {
   key: string;
@@ -10,9 +13,10 @@ export type FooterLinksProps = {
   links: FooterLink[];
   orientation?: 'vertical' | 'horizontal';
   className?: string;
+  renderLink?: RenderLink;
 };
 
-export const FooterLinks = ({ links, orientation = 'horizontal', className }: FooterLinksProps) => (
+export const FooterLinks = ({ links, orientation = 'horizontal', className, renderLink }: FooterLinksProps) => (
   <div
     className={cn(
       orientation === 'horizontal' && 'flex flex-row flex-wrap gap-4',
@@ -20,8 +24,12 @@ export const FooterLinks = ({ links, orientation = 'horizontal', className }: Fo
       className
     )}
   >
-    {links.map(({ key, linkProps }) => (
-      <Link key={key} color='none' {...linkProps} />
-    ))}
+    {links.map(({ key, linkProps }) =>
+      renderLink ? (
+        <span key={key}>{renderLink({ href: linkProps.href, children: linkProps.children, className: 'link' })}</span>
+      ) : (
+        <Link key={key} color='none' {...linkProps} />
+      )
+    )}
   </div>
 );
