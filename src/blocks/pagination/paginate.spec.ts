@@ -58,4 +58,39 @@ describe('paginate', () => {
     const result = paginate({ itemsCount: -1, pageSize: 10 });
     expect(result.lastPage).toBe(1);
   });
+
+  it('should show start boundary pages with spacer when current page is in the middle', () => {
+    const result = paginate({ itemsCount: 200, pageSize: 10, currentPage: 10, boundaryCount: 1 });
+    const pages = result.pages.filter((p) => 'number' in p);
+    const spacers = result.pages.filter((p) => 'spacer' in p);
+    expect(pages[0]).toMatchObject({ number: 1 });
+    expect(spacers).toHaveLength(2);
+  });
+
+  it('should show end boundary pages with spacer when current page is near start', () => {
+    const result = paginate({ itemsCount: 200, pageSize: 10, currentPage: 2, boundaryCount: 1 });
+    const pages = result.pages.filter((p) => 'number' in p);
+    const lastPage = pages[pages.length - 1];
+    expect(lastPage).toMatchObject({ number: 20 });
+  });
+
+  it('should show start boundary pages when current page is near end', () => {
+    const result = paginate({ itemsCount: 200, pageSize: 10, currentPage: 19, boundaryCount: 1 });
+    const pages = result.pages.filter((p) => 'number' in p);
+    expect(pages[0]).toMatchObject({ number: 1 });
+  });
+
+  it('should not show end spacer when current page is in end boundary', () => {
+    const result = paginate({ itemsCount: 200, pageSize: 10, currentPage: 19, boundaryCount: 1 });
+    const spacers = result.pages.filter((p) => 'spacer' in p);
+    const endSpacers = spacers.filter((s) => 'spacer' in s && s.spacer === 'spacer-end');
+    expect(endSpacers).toHaveLength(0);
+  });
+
+  it('should not show start spacer when current page is in start boundary', () => {
+    const result = paginate({ itemsCount: 200, pageSize: 10, currentPage: 2, boundaryCount: 1 });
+    const spacers = result.pages.filter((p) => 'spacer' in p);
+    const startSpacers = spacers.filter((s) => 'spacer' in s && s.spacer === 'spacer-start');
+    expect(startSpacers).toHaveLength(0);
+  });
 });
