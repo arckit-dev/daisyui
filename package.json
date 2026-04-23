@@ -106,8 +106,8 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "tsdown",
-    "dev": "tsdown --watch",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -172,7 +172,7 @@
     "semantic-release": "^24.0.0",
     "size-limit": "^11.0.0",
     "tailwind-merge": "^3.0.0",
-    "tsdown": "^0.12.0",
+    "tsup": "^8.4.0",
     "typescript": "^5.9.0",
     "jsdom": "^26.0.0",
     "vitest": "^4.0.0"
