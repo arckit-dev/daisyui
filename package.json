@@ -1,6 +1,6 @@
 {
   "name": "@arckit/daisyui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "DaisyUI/Tailwind component library with primitives, blocks, headless utilities, icons, and theme support",
   "packageManager": "pnpm@10.33.0",
   "license": "MIT",

@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/arckit-dev/daisyui/compare/v1.0.0...v1.0.1) (2026-04-23)
+
+
+### Bug Fixes
+
+* switch to tsup and inject 'use client' directive ([1ad356d](https://github.com/arckit-dev/daisyui/commit/1ad356d7b4805cfe8e5b70b7ae161c675f5b1412))
+
 # 1.0.0 (2026-04-20)
 
 
