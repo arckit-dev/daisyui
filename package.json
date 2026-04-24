@@ -26,6 +26,16 @@
         "default": "./dist/index.cjs"
       }
     },
+    "./client": {
+      "import": {
+        "types": "./dist/client.d.ts",
+        "default": "./dist/client.js"
+      },
+      "require": {
+        "types": "./dist/client.d.cts",
+        "default": "./dist/client.cjs"
+      }
+    },
     "./primitives": {
       "import": {
         "types": "./dist/primitives.d.ts",
@@ -36,6 +46,16 @@
         "default": "./dist/primitives.cjs"
       }
     },
+    "./primitives-client": {
+      "import": {
+        "types": "./dist/primitives-client.d.ts",
+        "default": "./dist/primitives-client.js"
+      },
+      "require": {
+        "types": "./dist/primitives-client.d.cts",
+        "default": "./dist/primitives-client.cjs"
+      }
+    },
     "./blocks": {
       "import": {
         "types": "./dist/blocks.d.ts",
@@ -44,6 +64,16 @@
       "require": {
         "types": "./dist/blocks.d.cts",
         "default": "./dist/blocks.cjs"
+      }
+    },
+    "./blocks-client": {
+      "import": {
+        "types": "./dist/blocks-client.d.ts",
+        "default": "./dist/blocks-client.js"
+      },
+      "require": {
+        "types": "./dist/blocks-client.d.cts",
+        "default": "./dist/blocks-client.cjs"
       }
     },
     "./headless": {
@@ -92,8 +122,11 @@
   "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
+      "client": ["dist/client.d.ts"],
       "primitives": ["dist/primitives.d.ts"],
+      "primitives-client": ["dist/primitives-client.d.ts"],
       "blocks": ["dist/blocks.d.ts"],
+      "blocks-client": ["dist/blocks-client.d.ts"],
       "headless": ["dist/headless.d.ts"],
       "icons": ["dist/icons.d.ts"],
       "theme": ["dist/theme.d.ts"],
