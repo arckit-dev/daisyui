@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/arckit-dev/daisyui/compare/v1.0.1...v1.1.0) (2026-04-24)
+
+
+### Features
+
+* separate client and server entry points ([532b6c3](https://github.com/arckit-dev/daisyui/commit/532b6c31a2f2e9129a1b8cb645862c74388a28d5))
+
 ## [1.0.1](https://github.com/arckit-dev/daisyui/compare/v1.0.0...v1.0.1) (2026-04-23)
 
 
