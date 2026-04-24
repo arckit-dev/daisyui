@@ -1,3 +1,11 @@
+## [1.1.2](https://github.com/arckit-dev/daisyui/compare/v1.1.1...v1.1.2) (2026-04-24)
+
+
+### Bug Fixes
+
+* guard document access in SkipLinksPortal for SSR ([5a1ac59](https://github.com/arckit-dev/daisyui/commit/5a1ac5980faba975597d38b02b51505008187873))
+* lint imports in skip-links-portal ([061ed04](https://github.com/arckit-dev/daisyui/commit/061ed045ea0c6793037369bce2f1b67c88c483f0))
+
 ## [1.1.1](https://github.com/arckit-dev/daisyui/compare/v1.1.0...v1.1.1) (2026-04-24)
 
 
