@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/arckit-dev/daisyui/compare/v1.1.0...v1.1.1) (2026-04-24)
+
+
+### Bug Fixes
+
+* move combobox, modal, sortable-list to primitives-client ([cccf059](https://github.com/arckit-dev/daisyui/commit/cccf059311d5e98da5dd4339f2b16896b847a3f5))
+
 # [1.1.0](https://github.com/arckit-dev/daisyui/compare/v1.0.1...v1.1.0) (2026-04-24)
 
 
