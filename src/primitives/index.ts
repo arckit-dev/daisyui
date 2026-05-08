@@ -19,6 +19,7 @@ export * from './loading-button';
 export * from './placement';
 export * from './range';
 export * from './scale';
+export * from './select';
 export * from './selected-items';
 export * from './status';
 export * from './table';

@@ -5,11 +5,11 @@ import type { Kind } from './kind';
 import type { Scale } from './scale';
 
 export type ButtonClass<Prefix extends `${string}btn` = 'btn'> = {
-  color?: `${Prefix}-${Color}`;
-  kind?: `${Prefix}-${Kind}`;
-  behavior?: `${Prefix}-${'active' | 'disabled'}`;
-  scale?: `${Prefix}-${Scale}`;
-  modifier?: `${Prefix}-${'wide' | 'block' | 'square' | 'circle'}`;
+  color?: `${Prefix}-${Color}` | undefined;
+  kind?: `${Prefix}-${Kind}` | undefined;
+  behavior?: `${Prefix}-${'active' | 'disabled'}` | undefined;
+  scale?: `${Prefix}-${Scale}` | undefined;
+  modifier?: `${Prefix}-${'wide' | 'block' | 'square' | 'circle'}` | undefined;
 };
 
 export type ButtonProps = ComponentProps<'button'> & ButtonClass;
