@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/arckit-dev/daisyui/compare/v1.1.2...v1.2.0) (2026-05-08)
+
+
+### Features
+
+* add select primitive ([952435e](https://github.com/arckit-dev/daisyui/commit/952435e9464f27ea305800ee74855d985dde546c))
+
 ## [1.1.2](https://github.com/arckit-dev/daisyui/compare/v1.1.1...v1.1.2) (2026-04-24)
 
 
