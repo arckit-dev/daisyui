@@ -22,7 +22,7 @@ export const Modal = ({ open, onClose, position, responsive, className, children
     if (!dialog) return;
 
     if (open && !dialog.open) dialog.showModal();
-    else dialog.close();
+    else if (!open && dialog.open) dialog.close();
   }, [open]);
 
   useEffect(() => {
