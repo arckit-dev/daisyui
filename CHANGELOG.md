@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/arckit-dev/daisyui/compare/v1.2.0...v1.2.1) (2026-05-29)
+
+
+### Bug Fixes
+
+* **modal:** don't close an already-open dialog on effect re-run ([f11c5b4](https://github.com/arckit-dev/daisyui/commit/f11c5b4efda7894b855c038152959b65303dc7c3))
+
 # [1.2.0](https://github.com/arckit-dev/daisyui/compare/v1.1.2...v1.2.0) (2026-05-08)
 
 
