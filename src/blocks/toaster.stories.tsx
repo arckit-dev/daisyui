@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { useState } from 'react';
 import toast, { Toaster as HotToaster } from 'react-hot-toast';
 import { Button } from '../primitives/button';
+import { Modal, ModalBox, ModalCloseButton } from '../primitives/modal';
 import { Toaster } from './toaster';
 
 const meta = {
@@ -313,6 +315,37 @@ export const FormSubmission: Story = {
   parameters: {
     docs: {
       description: { story: 'Form submission with loading and success toasts.' }
+    }
+  }
+};
+
+const AboveModalDemo = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className='relative min-h-96 w-full bg-base-200 p-8'>
+      <Button onClick={() => setOpen(true)}>Open Modal</Button>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <ModalBox>
+          <ModalCloseButton />
+          <h2 className='mb-4 text-lg font-bold'>Modal in the top layer</h2>
+          <Button color='btn-error' onClick={() => toast.error('This toast stays visible above the modal backdrop!')}>
+            Trigger Error Toast
+          </Button>
+        </ModalBox>
+      </Modal>
+      <Toaster directionY='toast-top' directionX='toast-center' />
+    </div>
+  );
+};
+
+export const AboveModal: Story = {
+  render: () => <AboveModalDemo />,
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'The toast container is promoted to the top layer via the Popover API, so toasts remain visible above a native <dialog> opened with showModal() and its backdrop.'
+      }
     }
   }
 };
