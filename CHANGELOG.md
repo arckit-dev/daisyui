@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/arckit-dev/daisyui/compare/v1.2.1...v1.2.2) (2026-07-07)
+
+
+### Bug Fixes
+
+* **toaster:** keep toasts visible above modal dialogs via the Popover API ([842a92a](https://github.com/arckit-dev/daisyui/commit/842a92a0a17d8819cb6dfb3f41903b9e8b68c12d))
+
 ## [1.2.1](https://github.com/arckit-dev/daisyui/compare/v1.2.0...v1.2.1) (2026-05-29)
 
 
