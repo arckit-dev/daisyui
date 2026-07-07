@@ -1,6 +1,6 @@
 'use client';
 
-import type { ComponentProps } from 'react';
+import { type ComponentProps, useEffect, useRef } from 'react';
 import { type ToastType, useToaster } from 'react-hot-toast';
 import type { Toast } from 'react-hot-toast/headless';
 import { Alert, type AlertClass, type AlertProps } from '../primitives/alert';
@@ -28,10 +28,27 @@ const isAllowedTypeColor = (toast: Toast): toast is Toast & { type: ToastTypeCol
 export const Toaster = ({ directionX, directionY, kind, ...props }: ToasterProps) => {
   const { toasts, handlers } = useToaster();
   const { startPause, endPause } = handlers;
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (typeof container?.showPopover !== 'function') return;
+    // A native <dialog> opened with showModal() paints in the top layer, above any z-index.
+    // Re-showing the popover on each toast update puts the container back on top of it.
+    if (container.matches(':popover-open')) container.hidePopover();
+    if (toasts.some((toast: Toast) => toast.visible)) container.showPopover();
+  }, [toasts]);
 
   return (
     // biome-ignore lint/a11y/noStaticElementInteractions: This <div> only handles mouse events for UX purposes and is not intended to be an interactive or focusable element
-    <div className={cn('toast z-10', directionX, directionY)} onMouseEnter={startPause} onMouseLeave={endPause} {...props}>
+    <div
+      ref={containerRef}
+      popover='manual'
+      className={cn('toast z-10 m-0 overflow-visible border-0 bg-transparent', directionX, directionY)}
+      onMouseEnter={startPause}
+      onMouseLeave={endPause}
+      {...props}
+    >
       {toasts
         .filter((toast: Toast) => toast.visible)
         .map((toast: Toast) => (
